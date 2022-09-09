@@ -13,24 +13,20 @@ jobs:
     <<: *top
     steps:
       - checkout
-      - run:
-          name: "build state"
-          command: npm run lint
+      - run: npm i
+      - run: npm run lint
   test:
     <<: *top
     steps:
       - checkout
-      - run:
-          name: "test stage"
-          command: npm run test
+      - run: npm i
+      - run: npm run test
 
   analyze:
     <<: *top
     steps:
       - checkout
-      - run:
-          name: "analyze stage"
-          command: npm audit
+      - run: npm audit
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
